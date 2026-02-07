@@ -1,4 +1,26 @@
+
+/* // FIND Largest number in an array slice
+fn find_largest(stream: &[i32]) -> &i32 {
+    let mut largest: &i32 = &stream[0];
+    for item in stream {
+        if item > largest {
+            largest = item;
+        }
+    }
+    largest
+}
+*/
+
 fn main() {
+
+    /* CONTINUED..FIND Largest number in an array slice
+    let master: [i32; 7] = [1,2,3,12,5,6,7];
+    let stream: &[i32; 7] = &master;
+
+    let result = find_largest(stream);
+
+    println!("{result}");
+    */
 
     /* Updating a Box (heap) via a mutable reference (stack) several mutable refs deep..
     let mut a: Box<i32> = Box::new(1);
