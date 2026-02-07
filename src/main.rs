@@ -48,4 +48,14 @@ fn main() {
 
     println!("{c}");
      */
+
+
+    /* Updating an i32 (stack) via a mutable reference (stack)
+    let mut a: i32 = 1;
+    let b: &mut i32 = &mut a;
+
+    *b = 2; // OR a = 2;  OR a += 1;
+    println!("{b}");
+    */
+
 }
