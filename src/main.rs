@@ -58,4 +58,21 @@ fn main() {
     println!("{b}");
     */
 
+
+    /* Updating a mutable variable (stack) via a nested mutable reference (stack) n-layers deep.
+    let mut a: i32 = 1;
+    let mut b: &mut i32 = &mut a;
+    let mut c: &mut &mut i32 = &mut b;
+    let mut d: &mut &mut &mut i32 = &mut c;
+    let mut e: &mut &mut &mut &mut i32 = &mut d;
+    let mut f: &mut &mut &mut &mut &mut i32 = &mut e;
+    let mut g: &mut &mut &mut &mut &mut &mut i32 = &mut f;
+    let mut h: &mut &mut &mut &mut &mut &mut &mut i32 = &mut g;
+    let i: &mut &mut &mut &mut &mut &mut &mut &mut i32 = &mut h;
+
+    ********i += 1;
+
+    println!("{i}");
+    */
+
 }
