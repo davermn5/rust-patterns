@@ -1,4 +1,22 @@
 
+//Enum code..
+#[derive(Debug)]
+enum SpreadsheetCell<'a> {
+    Int(i32),
+    Float(f64),
+    Text(&'a str)
+}
+
+impl SpreadsheetCell<'_> {
+    fn value(&self) -> &dyn std::fmt::Debug {
+        match self {
+            SpreadsheetCell::Int(i) => i,
+            SpreadsheetCell::Float(f) => f,
+            SpreadsheetCell::Text(s) => s
+        }
+    }
+}
+
 /* // FIND Largest number in an array slice
 fn find_largest(stream: &[i32]) -> &i32 {
     let mut largest: &i32 = &stream[0];
@@ -12,6 +30,17 @@ fn find_largest(stream: &[i32]) -> &i32 {
 */
 
 fn main() {
+
+    //CONTINUED..Enum code..
+    let row: Vec<SpreadsheetCell> = vec![
+        SpreadsheetCell::Int(3),
+        SpreadsheetCell::Float(1.2),
+        SpreadsheetCell::Text("hello")
+    ];
+
+    let first = &row[0].value();
+    println!("{:?}", first);
+    /// END..Enum code..
 
     /* CONTINUED..FIND Largest number in an array slice
     let master: [i32; 7] = [1,2,3,12,5,6,7];
