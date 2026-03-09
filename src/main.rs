@@ -1,6 +1,7 @@
 
 //Problem: Given 2 string slice inputs (s, t), return true if s can be found in the same order as it appears in t, otherwise false.
 // For example: "ace" can be found in "abcde", but not "acer". Validate bool success once the iterator has crossed the finish-line of s_bytes.len().
+// Solution Time Complexity: O(n)  linear
 fn is_subsequence(s: &str, t: &str) -> bool {
     let s_bytes = s.as_bytes();
     let mut x1 = 0;
