@@ -10,19 +10,13 @@ fn sorted_arrs_combine(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
 
     // 'Less than or equal to' iterates through each of the entire arrays
     while x1 <= y1 && x2 <= y2 {
-        if arr1[x1] < arr2[x2] {
+        if arr1[x1] <= arr2[x2] {
             out.push(arr1[x1]);
             x1 += 1;
         }
         else {
-            if arr2[x2] < arr1[x1] {
-                out.push(arr2[x2]);
-                x2 += 1;
-            }
-            else {
-                out.push(arr1[x1]);
-                x1 += 1;
-            }
+            out.push(arr2[x2]);
+            x2 += 1;
         }
     }
 
