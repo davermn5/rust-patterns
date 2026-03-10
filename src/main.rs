@@ -1,29 +1,23 @@
 
-//Problem: Given 2 string slice inputs (s, t), return true if s can be found in the same order as it appears in t, otherwise false.
-// For example: "ace" can be found in "abcde", but not "acer". Validate bool success once the iterator has crossed the finish-line of s_bytes.len().
-// Solution Time Complexity: O(n)  linear
-fn is_subsequence(s: &str, t: &str) -> bool {
-    let s_bytes = s.as_bytes();
-    let mut x1 = 0;
-    let y1 = s_bytes.len() - 1;
+//Problem: Given an input array of chars (the visual string), return the same array holding the values stored in reverse order.
+//Solution Time Complexity: O(n)  linear
+fn reverse_string(s: &mut Vec<char>) -> &mut Vec<char> {
+    let mut x = 0;
+    let mut y = s.len() - 1;
 
-    let t_bytes = t.as_bytes();
-    let mut x2 = 0;
-    let y2 = t_bytes.len() - 1;
-
-    while x1 <= y1 && x2 <= y2 {
-        if s_bytes[x1] == t_bytes[x2] {
-            x1 += 1;
-        }
-        x2 += 1;
+    while x < y {
+        let temp = s[x];
+        s[x] = s[y];
+        s[y] = temp;
+        x += 1;
+        y -= 1;
     }
-    x1 == y1 + 1
+    s
 }
 
 fn main() {
-    let s = "ace";
-    let t = "abcde";
+    let mut s: Vec<char> = vec!['e','x','p','e','r','t'];
+    let result = reverse_string(&mut s);
 
-    let result = is_subsequence(&s, &t);
-    println!("Is s a Subsequence of t? {}", result);
+    println!("{:?}", result);
 }
