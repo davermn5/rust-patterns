@@ -8,6 +8,7 @@ fn sorted_arrs_combine(arr1: &[i32], arr2: &[i32]) -> Vec<i32> {
     let y2 = arr2.len() - 1;
     let mut out: Vec<i32> = vec![];
 
+    // 'Less than or equal to' iterates through each of the entire arrays
     while x1 <= y1 && x2 <= y2 {
         if arr1[x1] < arr2[x2] {
             out.push(arr1[x1]);
