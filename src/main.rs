@@ -6,20 +6,45 @@
 //  1. For every element 'n' in the array, calculate it's squared value and update in-place
 //  2. Bake-in 'count sort' ( Time complexity O(n) )
 
-fn count_sort(num: &mut Vec<i32>) -> &mut Vec<i32> {
-    let mut x = 0;
-    let y = num.len() - 1;
+use std::convert::TryInto;
 
+fn count_sort(arr: &mut Vec<i32>) -> Vec<i32> {
+
+    if arr.is_empty() {
+        return arr.to_vec();
+    }
+
+    // Method 1: Uses a while loop with 'counting sort' logic implemented in (O(n))
+    let mut x = 0;
+    let y = arr.len() - 1;
     while x <= y {
-        let temp = num[x];
-        num[x] = temp * temp;
+        let temp = arr[x];
+        arr[x] = temp * temp;
         x += 1;
     }
-    num
+
+    let min = *arr.iter().min().unwrap();
+    let max = *arr.iter().max().unwrap();
+    let range: usize = (max - min + 1).try_into().unwrap();
+
+    let mut count: Vec<i32> = vec![0; range];
+
+    for val_ref in arr.iter() {
+        count[(*val_ref - min) as usize] += 1;
+    }
+
+    let mut sorted: Vec<i32> = Vec::with_capacity(arr.len());
+
+    for (i,c_ref) in count.iter().enumerate() {
+        for _ in 0..*c_ref {
+            sorted.push((i as i32) + min);
+        }
+    }
+    sorted
 }
 
 fn main() {
-    let mut num: Vec<i32> = vec![-4,-1,0,3,10];
-    let result = count_sort(&mut num);
+    let mut arr: Vec<i32> = vec![-4, -1, 0, 3, 10];
+    let result = count_sort(&mut arr);
     println!("{:?}", result);
 }
