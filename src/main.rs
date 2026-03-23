@@ -14,7 +14,8 @@ fn count_sort(arr: &mut Vec<i32>) -> Vec<i32> {
         return arr.to_vec();
     }
 
-    // Method 1: Uses a while loop with 'counting sort' logic implemented in (O(n))
+    // This is correct solution. It uses a while loop with 'counting sort' to update the values (by squaring them) in-place.
+    //   Then, the sort logic below correctly sorts the array. Implemented in (O(n)) time complexity.
     let mut x = 0;
     let y = arr.len() - 1;
     while x <= y {
