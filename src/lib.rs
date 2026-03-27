@@ -1,11 +1,16 @@
 use std::convert::TryInto;
 use std::cmp::max;
 
-/* Algorithm: Squared Count Sort
+mod extended;
+
+/*
+ Algorithm: Squared Count Sort
     Provided an unsorted Vec of signed integers 32bits in length, square each element's value before returning.
-    Time Complexity: (O(n))
+    Time Complexity: (O(n + k)) with (O(n))
+    Space Complexity: (O(k)) => (O(1))
+ Scope: Private (for Unit Tests)
  */
-pub fn squared_count_sort(arr: &mut Vec<i32>) -> Vec<i32> {
+fn squared_count_sort(arr: &mut Vec<i32>) -> Vec<i32> {
 
     if arr.is_empty() {
         return arr.to_vec();
@@ -41,10 +46,12 @@ pub fn squared_count_sort(arr: &mut Vec<i32>) -> Vec<i32> {
 
 /*
  Algorithm: The Moving Window
-    Provided an input array 'n' and a target sum to reach for, return the maximum size of the array's subset (the window)
-    whose element values add up to the input 'target_sum'.
+    Provided an input array 'n' and a target sum, return the maximum size of the array's subset (the window)
+    whose element values add up to the input 'target_sum' as the iterator traverses 'n'.
+    Time Complexity: (O(n))
+ Scope: Private (for Unit Tests)
  */
-pub fn get_window_size(n: &[i32], target_sum: &i32) -> i32 {
+fn get_window_size(n: &[i32], target_sum: &i32) -> i32 {
     if n.is_empty() {
         return 0;
     }
@@ -66,12 +73,22 @@ pub fn get_window_size(n: &[i32], target_sum: &i32) -> i32 {
     return window_size.try_into().unwrap();
 }
 
-fn print_type_of<T>(_: &T) {
-    println!("{}", std::any::type_name::<T>());
+//INTEGRATION TEST (MODULE) FUNCTIONS (PUBLIC)
+pub mod frontdoor {
+    use crate::extended::helper_functions::login;
+
+    pub fn user_login_api(has_token: &bool) -> bool {
+        login(&has_token)
+    }
+
+    pub fn service_login_api(has_token: &bool) -> bool {
+        login(&has_token)
+    }
 }
 
+//UNIT TESTS
 #[cfg(test)]
-mod tests {
+mod linear_algorithms {
     use super::*;
 
     #[test]
@@ -87,5 +104,4 @@ mod tests {
         let _buff_out = get_window_size(&n, &21);
         assert_eq!(3, _buff_out);
     }
-
 }
