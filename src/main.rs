@@ -1,5 +1,5 @@
-use linearalgorithms::get_window_size;
-use linearalgorithms::squared_count_sort;
+use rplib::get_window_size;
+use rplib::squared_count_sort;
 
 fn main() {
     let mem_cache: [i32; 3] = [7,7,7];

@@ -1,13 +1,10 @@
 use std::convert::TryInto;
 use std::cmp::max;
 
-// Problem: Given an integer array 'nums' sorted in non-decreasing order, return an array of the squares of each number sorted in
-//   non-decreasing order.
-
-// Steps to solve:
-//  1. For every element 'n' in the array, calculate it's squared value and update in-place
-//  2. Bake-in 'count sort' ( Time complexity O(n) )
-
+/* Algorithm: Squared Count Sort
+    Provided an unsorted Vec of signed integers 32bits in length, square each element's value before returning.
+    Time Complexity: (O(n))
+ */
 pub fn squared_count_sort(arr: &mut Vec<i32>) -> Vec<i32> {
 
     if arr.is_empty() {
@@ -43,11 +40,10 @@ pub fn squared_count_sort(arr: &mut Vec<i32>) -> Vec<i32> {
 }
 
 /*
- Problem:  The Moving Window
- Given an input array 'n', get the max size of the array subset (the window),
-  whose elements add up to the input 'target_sum'.
+ Algorithm: The Moving Window
+    Provided an input array 'n' and a target sum to reach for, return the maximum size of the array's subset (the window)
+    whose element values add up to the input 'target_sum'.
  */
-
 pub fn get_window_size(n: &[i32], target_sum: &i32) -> i32 {
     if n.is_empty() {
         return 0;
@@ -84,7 +80,7 @@ mod tests {
         let result = squared_count_sort(&mut arr);
         assert_eq!([0, 1, 9, 16, 100], *result);
     }
-    
+
     #[test]
     fn test_get_window_size() {
         let n: [i32; 3] = [7,7,7];

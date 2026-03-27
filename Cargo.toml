@@ -5,9 +5,9 @@ edition = "2024"
 authors = ["David <davermn5@gmail.com>"]
 
 [lib]
-name = "linearalgorithms"
+name = "rplib"
 path = "src/lib.rs"
 
 [[bin]]
-name = "rust-patterns"
+name = "rpbin"
 path = "src/main.rs"
