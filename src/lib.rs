@@ -93,6 +93,7 @@ pub mod frontdoor {
 //UNIT TESTS
 #[cfg(test)]
 mod linear_algorithms {
+    use crate::frontdoor::user_login_api;
     use super::*;
 
     #[test]
@@ -107,5 +108,11 @@ mod linear_algorithms {
         let n: [i32; 3] = [7,7,7];
         let _buff_out = get_window_size(&n, &21);
         assert_eq!(3, _buff_out);
+    }
+
+    #[test]
+    fn use_frontdoor_login() {
+        let login_state = user_login_api(&true);
+        assert_eq!(login_state, true);
     }
 }
