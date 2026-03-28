@@ -73,6 +73,10 @@ fn get_window_size(n: &[i32], target_sum: &i32) -> i32 {
     return window_size.try_into().unwrap();
 }
 
+pub fn print_type_of<T>(_: &T) {
+    println!("{}", std::any::type_name::<T>())
+}
+
 //INTEGRATION TEST (MODULE) FUNCTIONS (PUBLIC)
 pub mod frontdoor {
     use crate::extended::helper_functions::login;
