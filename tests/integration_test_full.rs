@@ -1,6 +1,7 @@
 use rplib::frontdoor::user_login_api;
 use rplib::frontdoor::service_login_api;
 
+//INTEGRATION TESTS
 #[test]
 #[ignore]
 fn user_login() {
