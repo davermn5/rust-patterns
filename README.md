@@ -3,6 +3,6 @@
 
 ## What it is
 
-### Linear Algorithms (O(n)) for Memory-Optimized L2/L3 Container-based Edge Devices
+### Integration & Unit Tests for Linear Algorithms (O(n))
 1. cargo test  
 2. cargo run
