@@ -70,6 +70,23 @@ fn get_window_size(n: &[i32], target_sum: &i32) -> i32 {
     return window_size.try_into().unwrap();
 }
 
+/*
+    Algorithm: Palindrome string slicer
+ */
+fn is_palindrome_str_slice<T: AsRef<str> + std::fmt::Debug + PartialEq>(str_collection: &[T]) -> bool {
+    let mut x = 0;
+    let mut y = str_collection.len() - 1;
+
+    while x < y {
+        if str_collection[x] != str_collection[y] {
+            return false;
+        }
+        x += 1;
+        y -= 1;
+    }
+    true
+}
+
 //UNIT TESTS
 #[cfg(test)]
 mod linear_algorithms {
@@ -87,5 +104,13 @@ mod linear_algorithms {
         let n: [i32; 3] = [7,7,7];
         let _buff_out = get_window_size(&n, &21);
         assert_eq!(3, _buff_out);
+    }
+
+    #[test]
+    fn test_is_palindrome_str_slice() {
+        let mut str_collection: Vec<String> = vec!["r".into(), "a".into(), "c".into(), "e".into(), "c".into(), "a".into()];
+        str_collection.push("r".into());
+        let collection_is_palindrome = is_palindrome_str_slice(&str_collection);
+        //TODO Fix test for passing true
     }
 }
