@@ -87,6 +87,20 @@ fn is_palindrome_str_slice<T: AsRef<str> + std::fmt::Debug + PartialEq>(str_coll
     true
 }
 
+/*
+ Algorithm: Linear Search Generic
+    Provided an unsorted input array whose type already implements the 'PartialEq' trait and a needle (of the same type) return the array's index for that particular needle (value)
+    Time Complexity: (O(n))
+ */
+fn linear_search_generic<T: PartialEq>(data: &[T], needle: &T) ->Option<usize> {
+    for (k, v) in data.iter().enumerate() {
+        if v == needle {
+            return Some(k);
+        }
+    }
+    None
+}
+
 //UNIT TESTS
 #[cfg(test)]
 mod linear_algorithms {
@@ -112,5 +126,12 @@ mod linear_algorithms {
         str_collection.push("r".into());
         let collection_is_palindrome = is_palindrome_str_slice(&str_collection);
         //TODO Fix test for passing true
+    }
+
+    #[test]
+    fn test_linear_search_generic() {
+        let data: [i32; 8] = [4,2,12,16,19,22,46,1];
+        let output3 = linear_search_generic(&data, &22).unwrap_or(9999);
+        assert_eq!(5, output3);
     }
 }
